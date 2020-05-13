@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Quickly visualize your R dependency tree",
   "scripts": {
-    "build": "rimraf dist/ && parcel build src/index.html --experimental-scope-hoisting && touch dist/.nojekyll",
+    "build": "rimraf docs/ && parcel build --out-dir docs/ src/index.html --experimental-scope-hoisting && touch docs/.nojekyll",
     "dev": "rimraf dist-dev/ && parcel --out-dir dist-dev/ src/index.html"
   },
   "dependencies": {
