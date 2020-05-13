@@ -1,4 +1,8 @@
 # CRAN Dependency Visualizer
 > Creates interactive visualizations of R package dependency trees, using data scraped from CRAN
 
-![dplyr and tibble](./img/dplyr-tibble-example.png)
+Visualize any set of packages on CRAN just by plugging the names into the URL: [/#/packages/dplyr,tibble][1]
+
+[![dplyr and tibble](./img/dplyr-tibble-example.png)][1]
+
+[1]: https://tannerntannern.github.io/cran-visualizer/#/packages/dplyr,tibble
