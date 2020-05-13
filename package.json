@@ -1,0 +1,30 @@
+{
+  "name": "cran-visualizer",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Quickly visualize your R dependency tree",
+  "scripts": {
+    "build": "rimraf dist/ && parcel build src/index.html --experimental-scope-hoisting && touch dist/.nojekyll",
+    "dev": "rimraf dist-dev/ && parcel --out-dir dist-dev/ src/index.html"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "immutable": "^4.0.0-rc.12",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-graph-vis": "^1.0.5",
+    "react-router-dom": "^5.2.0",
+    "regenerator-runtime": "^0.13.5"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.18",
+    "@types/react-router-dom": "^5.1.5",
+    "parcel-bundler": "^1.12.4",
+    "rimraf": "^3.0.2",
+    "sass": "^1.26.5",
+    "typescript": "^3.9.2"
+  },
+  "author": "Tanner Nielsen",
+  "license": "MIT"
+}
