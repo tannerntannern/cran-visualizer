@@ -39,10 +39,8 @@ export default (...packageNames: string[]) => {
                 const frontierInfos = await Promise.all([..._searchFrontier].map(pkg => getPackageInfo(pkg)));
                 frontierInfos.forEach(info => {
                     info.imports.forEach(dep => {
-                        if (!_packages.has(dep)) {
-                            _nextSearchFrontier = _nextSearchFrontier.add(dep);
-                            _importsLinks = _importsLinks.add([info.name, dep]);
-                        }
+                        _nextSearchFrontier = _nextSearchFrontier.add(dep);
+                        _importsLinks = _importsLinks.add([info.name, dep]);
                     });
                     
                     // TODO: suggests
