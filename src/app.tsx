@@ -7,11 +7,11 @@ export default () => {
     return (
         <Router>
             <Switch>
-                <Route path="/packages/:pkgs">
+                <Route path="/packages/:relations/:pkgs">
                     <DependencyGraph/>
                 </Route>
                 <Route path="*">
-                    <Redirect to="/packages/dplyr,tibble"/>
+                    <Redirect to="/packages/imports,depends/dplyr,tibble"/>
                 </Route>
             </Switch>
         </Router>
