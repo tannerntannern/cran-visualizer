@@ -52,8 +52,8 @@ export default (packageNames: string[], relationTypes: RelationType[]) => {
                         const relatedPackages = info[relationName];
                         const relation = relations[relationName];
                         for (let dep of relatedPackages) {
+                            relation.push([pkg, dep]);
                             if (!visited.has(dep) && !frontier.has(dep)) {
-                                relation.push([pkg, dep]);
                                 nextFrontier.add(dep);
                             }
                         }
