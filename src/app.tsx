@@ -11,7 +11,7 @@ export default () => {
                     <DependencyGraph/>
                 </Route>
                 <Route path="*">
-                    <Redirect to="/packages/imports,depends/dplyr,tibble"/>
+                    <Redirect to="/packages/imports,depends/tibble"/>
                 </Route>
             </Switch>
         </Router>

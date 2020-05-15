@@ -18,8 +18,8 @@ type PackageInfo = {
 type Link = [string, string];
 
 export default (packageNames: string[], relationTypes: RelationType[]) => {
-    const { data: packageInfo, isValidating } = useSWR('package-info', getPackageInfo, { revalidateOnFocus: false });
-    const ready = !!packageInfo && !isValidating;
+    const { packageInfo, loading } = usePackageInfo();
+    const ready = !!packageInfo && !loading;
     const packageNamesSignature = packageNames.join(',');
     const relationTypesSignature = relationTypes.join(',');
 
@@ -33,7 +33,7 @@ export default (packageNames: string[], relationTypes: RelationType[]) => {
         };
 
         const result = { packages, relations };
-        
+
         if (!ready || !packageInfo) // !packageInfo is not logically necessary but makes type checker happy
             return result;
 
@@ -76,6 +76,11 @@ export default (packageNames: string[], relationTypes: RelationType[]) => {
     return { ready, packageInfo, relatedPackages, relations };
 };
 
+export const usePackageInfo = () => {
+    const { data: packageInfo, isValidating: loading } = useSWR('package-info', getPackageInfo, { revalidateOnFocus: false });
+    return { packageInfo, loading };
+};
+
 const getPackageInfo = async () => {
     const packageInfo: Record<string, PackageInfo> = {};
     const data = await axios.get(
@@ -114,7 +119,7 @@ const extractPackageList = (packageString: string, label: string): string[] => {
     const packagesMatch = new RegExp(`${label}:\\s+([^:]+)\\s+\\w+:`).exec(cleanString);
     if (packagesMatch === null)
         return [];
-    
+
     const packages = packagesMatch[1]
         .replace(/\s+/g, '')
         .split(',')
